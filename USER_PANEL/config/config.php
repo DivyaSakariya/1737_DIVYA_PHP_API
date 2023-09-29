@@ -9,7 +9,7 @@
         private $username = "root";
         private $password = "";
         private $db_name = "php";
-        private $table_name = "stdInformation";
+        private $table_name = "stdinformation";
 
         private $con;
 
@@ -19,7 +19,7 @@
             echo "Sum: " . $s;
         }
 
-        public function connectServer() {
+        public function __construct() {
 
             $this->con = mysqli_connect($this->host, $this->username, $this->password, $this->db_name);
 

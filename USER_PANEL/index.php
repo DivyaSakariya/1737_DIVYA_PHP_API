@@ -4,8 +4,6 @@
 
     $configObj = new Config();
 
-    $configObj->connectServer();
-
     $submit_btn = null;
 
     $submit_btn = @$_REQUEST['sbm_btn'];
