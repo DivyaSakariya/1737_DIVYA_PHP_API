@@ -50,22 +50,33 @@
             return $res;
 
         }
+        
+        public function fetchSingleData($id) {
 
-        public function deleteSingleData($id) {
-
-            $query = "DELETE FROM $this->table_name WHERE id = $id";
+            $query = "SELECT * FROM $this->table_name WHERE Id = $id";
 
             return mysqli_query($this->con,$query); 
 
         }
 
-        public function fetchSingleData($id) {
+        public function deleteSingleData($id) {
 
-            $query = "SELECT * FROM $this->table_name WHERE id = $id";
+            $query = "DELETE FROM $this->table_name WHERE Id = $id";
 
-            return mysqli_query($this->con,$query);
+            $fetch_single_record = $this->fetchSingleData($id);
+
+            $responce = mysqli_fetch_assoc($fetch_single_record);
+
+            if(mysqli_num_rows($fetch_single_record) == 1) {
+                mysqli_query(this->con,$query);
+                return true;   
+
+            } else {
+                return false;
+            }
 
         }
+
 
         public function updateData($id,$name,$age,$course) {
 
