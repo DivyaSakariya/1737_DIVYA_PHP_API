@@ -10,6 +10,8 @@
         private $password = "";
         private $db_name = "php";
         private $table_name = "stdinformation";
+        
+        private $user_table = "users";
 
         private $con;
 
@@ -35,6 +37,16 @@
 
             $query = "INSERT INTO $this->table_name(Name,Age,Course) VALUES('$name',$age,'$course')";
 
+            $res = mysqli_query($this->con,$query);
+
+            return $res;
+
+        }
+
+        public function register_user($name,$email,$password) {
+
+            $query = "INSERT INTO $this->user_table(id,name,email,password) VALUES(101,'$name,'$email','$password')";                 
+            
             $res = mysqli_query($this->con,$query);
 
             return $res;
